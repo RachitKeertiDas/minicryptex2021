@@ -276,7 +276,7 @@ func main() {
 					} else if current.Level == 3 {
 						resp = LevelResponse{3, "Level 3: A code. "}
 					} else if current.Level == 4 {
-						resp = LevelResponse{4, "Level 4: <Angad>"}
+						resp = LevelResponse{4, "Level 4: <a href='https://docs.google.com/document/d/e/2PACX-1vRbmcKXV1JTztY31VXhdcNj6jKLWJHaMzaHTul3uIdZYYmdhLzuJS55mb4I2YTn-wLGfvs0-uDjHItu/pub'>Click here. </a>"}
 					} else if current.Level == 5 {
 						resp = LevelResponse{5, "Level 5: The Modern name of the hairpin. "}
 					} else if current.Level == 6 {

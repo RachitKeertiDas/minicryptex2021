@@ -269,7 +269,10 @@ class LevelText extends React.Component {
     } else {
       return (
         <div className="won congrats">
-          <p className="mobile">{this.state.url}</p>
+          <p
+            className="mobile"
+            dangerouslySetInnerHTML={{ __html: this.state.url }}
+          ></p>
           <form onSubmit={this.handleSubmit}>
             <input
               type="name"
