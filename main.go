@@ -84,7 +84,7 @@ func main() {
 	answers["4"] = "hailhydra"
 	answers["5"] = "riptide"
 	answers["6"] = "pixar"
-	answers["7"] = "lksdfjhbsldkjfhbsdlkfjhlkdfsj"
+	answers["7"] = "lemonysnicket"
 	// Set client options
 	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
 	// Connect to MongoDB
