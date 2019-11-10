@@ -274,7 +274,10 @@ class LevelText extends React.Component {
             dangerouslySetInnerHTML={{ __html: this.state.url }}
           ></p>
           <p className="mobile">
-            <a href="https://chat.whatsapp.com/D1AEiLDkCbs5GYplh5KK3U">
+            <a
+              href="https://chat.whatsapp.com/D1AEiLDkCbs5GYplh5KK3U"
+              style={{ color: "#61A8D6" }}
+            >
               Whatsapp Forum
             </a>
           </p>
