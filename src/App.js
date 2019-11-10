@@ -296,12 +296,12 @@ class LevelUsername extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "x",
-      name1: "x",
-      name2: "x",
-      name3: "x",
-      name4: "x",
-      name5: "x"
+      value: "Team Name",
+      name1: "Participant Name",
+      name2: "Participant Name",
+      name3: "Participant Name",
+      name4: "Participant Name",
+      name5: "Participant Name"
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChange1 = this.handleChange1.bind(this);
