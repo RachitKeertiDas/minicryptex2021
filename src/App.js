@@ -9,7 +9,7 @@ import axios from "axios";
 
 const AUTH0_CLIENT_ID = "DxKXzYxf9B12bDwME3Og6YN6p8RoqvFA";
 const AUTH0_DOMAIN = "dev-l0ini8h1.us.auth0.com";
-const AUTH0_CALLBACK_URL = "http://localhost:3000";
+const AUTH0_CALLBACK_URL = "https://cryptex.elan.org.in";
 const AUTH0_API_AUDIENCE = "https://dev-l0ini8h1.us.auth0.com/api/v2/";
 
 // <div className="navbar" id="mainNavBar">
@@ -141,7 +141,7 @@ class LoggedIn extends React.Component {
 
   fetchLevel() {
     let url =
-      "http://localhost:8080/whichlevel/" +
+      "https://cryptex.elan.org.in/whichlevel/" +
       JSON.parse(localStorage.getItem("email")).email;
     fetch(url)
       .then(response => response.json())
@@ -226,7 +226,7 @@ class LevelText extends React.Component {
       }
     };
     let url =
-      "http://localhost:8080/answer/" +
+      "https://cryptex.elan.org.in/answer/" +
       this.state.level.toString() +
       "/" +
       this.state.value +
@@ -250,7 +250,7 @@ class LevelText extends React.Component {
       }
     };
     let url =
-      "http://localhost:8080/level?id_token=" +
+      "https://cryptex.elan.org.in/level?id_token=" +
       localStorage.getItem("id_token");
     axios
       .get(url, headers)
@@ -278,7 +278,7 @@ class LevelText extends React.Component {
               href="https://chat.whatsapp.com/D1AEiLDkCbs5GYplh5KK3U"
               style={{ color: "#61A8D6" }}
             >
-              Whatsapp Forum
+              Discourse Forum
             </a>
           </p>
           <form onSubmit={this.handleSubmit}>
@@ -345,12 +345,12 @@ class LevelUsername extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    let url = "http://localhost:8080/doesUsernameExist/" + this.state.value;
+    let url = "https://cryptex.elan.org.in/doesUsernameExist/" + this.state.value;
     fetch(url)
       .then(response => response.json())
       .then(result => {
-        if (result.message == "true") {
-          alert("That username exists");
+        if (result.message === "true") {
+          alert("This username already exists");
         } else {
           const headers = {
             headers: {
@@ -359,7 +359,7 @@ class LevelUsername extends React.Component {
             }
           };
           var loginUrl =
-            "http://localhost:8080" +
+            "https://cryptex.elan.org.in" +
             "/adduser/" +
             JSON.parse(localStorage.getItem("email")).email +
             "/" +
@@ -473,7 +473,7 @@ class LevelRules extends React.Component {
       }
     };
     let url =
-      "http://localhost:8080/acceptedrules?id_token=" +
+      "https://cryptex.elan.org.in/acceptedrules?id_token=" +
       localStorage.getItem("id_token");
     axios
       .get(url, headers)
@@ -509,7 +509,7 @@ class LevelRules extends React.Component {
             <ol>
               <li>
                 Check out the rules{" "}
-                <a href="http://localhost:8080/rules">here</a>.
+                <a href="https://cryptex.elan.org.in/rules">here</a>.
               </li>
             </ol>
           </div>
@@ -548,9 +548,9 @@ class Home extends React.Component {
         <div class="jumbotron animated fadeIn">
           <img src={image} class="main-image" />
           <p class="jumbotron-heading animated fadeIn">The Hunt</p>
-          <p class="jumbotron-subtitle">Zozimus 2019</p>
+          <p class="jumbotron-subtitle">Mini Cryptex 2020</p>
           <p class="jumbotron-subtitle">
-            Online till 1900 hours, 10th November.{" "}
+            Online till 1830 hours, 22th November.{" "}
           </p>
           <button className="DiveInButton" onClick={this.authenticate}>
             <div className="transform">D I V E &nbsp; I N</div>
