@@ -102,13 +102,13 @@ func main() {
 	jwtMiddleware := jwtmiddleware.New(jwtmiddleware.Options{
 		ValidationKeyGetter: func(token *jwt.Token) (interface{}, error) {
 			// Verify 'aud' claim
-			aud := "https://zozimus-hunt.auth0.com/api/v2/"
+			aud := "https://dev-l0ini8h1.us.auth0.com/api/v2/"
 			checkAud := token.Claims.(jwt.MapClaims).VerifyAudience(aud, false)
 			if !checkAud {
 				return token, errors.New("Invalid audience.")
 			}
 			// Verify 'iss' claim
-			iss := "https://zozimus-hunt.auth0.com/"
+			iss := "https://dev-l0ini8h1.us.auth0.com/"
 			checkIss := token.Claims.(jwt.MapClaims).VerifyIssuer(iss, false)
 			if !checkIss {
 				return token, errors.New("Invalid issuer.")
@@ -305,7 +305,7 @@ func CSSHandler(w http.ResponseWriter, r *http.Request) {
 }
 func getPemCert(token *jwt.Token) (string, error) {
 	cert := ""
-	resp, err := http.Get("https://zozimus-hunt.auth0.com/.well-known/jwks.json")
+	resp, err := http.Get("https://dev-l0ini8h1.us.auth0.com/.well-known/jwks.json")
 
 	if err != nil {
 		return cert, err

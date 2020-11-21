@@ -7,10 +7,10 @@ import $ from "jquery";
 import auth0 from "auth0-js";
 import axios from "axios";
 
-const AUTH0_CLIENT_ID = "n6UsLego812KDbGksvSi5KQdZ8okPBQ2";
-const AUTH0_DOMAIN = "zozimus-hunt.auth0.com";
-const AUTH0_CALLBACK_URL = "https://hunt.zozimus.in";
-const AUTH0_API_AUDIENCE = "https://zozimus-hunt.auth0.com/api/v2/";
+const AUTH0_CLIENT_ID = "DxKXzYxf9B12bDwME3Og6YN6p8RoqvFA";
+const AUTH0_DOMAIN = "dev-l0ini8h1.us.auth0.com";
+const AUTH0_CALLBACK_URL = "http://localhost:3000";
+const AUTH0_API_AUDIENCE = "https://dev-l0ini8h1.us.auth0.com/api/v2/";
 
 // <div className="navbar" id="mainNavBar">
 // 	<div className="container">
@@ -141,7 +141,7 @@ class LoggedIn extends React.Component {
 
   fetchLevel() {
     let url =
-      "https://hunt.zozimus.in/whichlevel/" +
+      "http://localhost:8080/whichlevel/" +
       JSON.parse(localStorage.getItem("email")).email;
     fetch(url)
       .then(response => response.json())
@@ -226,7 +226,7 @@ class LevelText extends React.Component {
       }
     };
     let url =
-      "https://hunt.zozimus.in/answer/" +
+      "http://localhost:8080/answer/" +
       this.state.level.toString() +
       "/" +
       this.state.value +
@@ -250,7 +250,7 @@ class LevelText extends React.Component {
       }
     };
     let url =
-      "https://hunt.zozimus.in/level?id_token=" +
+      "http://localhost:8080/level?id_token=" +
       localStorage.getItem("id_token");
     axios
       .get(url, headers)
@@ -345,7 +345,7 @@ class LevelUsername extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    let url = "https://hunt.zozimus.in/doesUsernameExist/" + this.state.value;
+    let url = "http://localhost:8080/doesUsernameExist/" + this.state.value;
     fetch(url)
       .then(response => response.json())
       .then(result => {
@@ -359,7 +359,7 @@ class LevelUsername extends React.Component {
             }
           };
           var loginUrl =
-            "https://hunt.zozimus.in" +
+            "http://localhost:8080" +
             "/adduser/" +
             JSON.parse(localStorage.getItem("email")).email +
             "/" +
@@ -473,7 +473,7 @@ class LevelRules extends React.Component {
       }
     };
     let url =
-      "https://hunt.zozimus.in/acceptedrules?id_token=" +
+      "http://localhost:8080/acceptedrules?id_token=" +
       localStorage.getItem("id_token");
     axios
       .get(url, headers)
@@ -509,7 +509,7 @@ class LevelRules extends React.Component {
             <ol>
               <li>
                 Check out the rules{" "}
-                <a href="https://hunt.zozimus.in/rules">here</a>.
+                <a href="http://localhost:8080/rules">here</a>.
               </li>
             </ol>
           </div>

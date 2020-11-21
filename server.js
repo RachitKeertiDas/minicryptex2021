@@ -26,8 +26,8 @@ const checkJwt = jwt({
   }),
 
   // Validate the audience and the issuer.
-  audience: "https://zozimus-hunt.auth0.com/api/v2/",
-  issuer: `https://zozimus-hunt.auth0.com/`,
+  audience: "https://dev-l0ini8h1.us.auth0.com/api/v2/",
+  issuer: `https://dev-l0ini8h1.us.auth0.com/`,
   algorithms: ["RS256"]
 });
 
