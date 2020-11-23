@@ -6,19 +6,19 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
     />
-    <link rel="stylesheet" href="/css" />
+    <link rel="stylesheet" href="/backend/css" />
   </head>
 
   <body>
     <nav class="animated fadeInDown">
       <ul>
-        <a href="/rules">
+        <a href="/backend/rules">
           <li>Guidelines</li>
         </a>
         <a href="/" className="main animated flipInX">
           <li>H U N T</li>
         </a>
-        <a href="/leaderboardtable" id="leaderboard-nav-link">
+        <a href="/backend/leaderboardtable" id="leaderboard-nav-link">
           <li>Leaderboard</li>
         </a>
       </ul>
@@ -34,7 +34,7 @@
     </table>
 
     <script>
-      fetch("https://hunt.zozimus.in/leaderboard")
+      fetch("https://cryptex.elan.org.in/backend/leaderboard")
         .then(response => response.json())
         .then(result => {
           for (var i = 1; i <= result.length; i++) {

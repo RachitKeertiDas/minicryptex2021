@@ -28,13 +28,13 @@ class Navbar extends React.Component {
     return (
       <nav class="animated fadeInDown">
         <ul>
-          <a href="/rules">
+          <a href="/backend/rules">
             <li>Guidelines</li>
           </a>
           <a href="/" className="main animated flipInX">
             <li>H U N T</li>
           </a>
-          <a href="/leaderboardtable" id="leaderboard-nav-link">
+          <a href="/backend/leaderboardtable" id="leaderboard-nav-link">
             <li>Leaderboard</li>
           </a>
         </ul>
@@ -141,7 +141,7 @@ class LoggedIn extends React.Component {
 
   fetchLevel() {
     let url =
-      "https://cryptex.elan.org.in/whichlevel/" +
+      "https://cryptex.elan.org.in/backend/whichlevel/" +
       JSON.parse(localStorage.getItem("email")).email;
     fetch(url)
       .then(response => response.json())
@@ -186,7 +186,7 @@ class LevelWon extends React.Component {
         <p class="mobile">Credits:</p>
         <p class="mobile">
           Questions by: Rajnish Gupta, Saurav Madhusoodanan, Rishika Rao, Riddhi
-          Shah, Rachit Keerti Das,Angad Narula
+          Shah, ,Angad Narula
         </p>
         <p class="mobile">
           Website by: Vishnu VS, Lambda Coordinator,IIT Hyderabad
@@ -226,7 +226,7 @@ class LevelText extends React.Component {
       }
     };
     let url =
-      "https://cryptex.elan.org.in/answer/" +
+      "https://cryptex.elan.org.in/backend/answer/" +
       this.state.level.toString() +
       "/" +
       this.state.value +
@@ -250,7 +250,7 @@ class LevelText extends React.Component {
       }
     };
     let url =
-      "https://cryptex.elan.org.in/level?id_token=" +
+      "https://cryptex.elan.org.in/backend/level?id_token=" +
       localStorage.getItem("id_token");
     axios
       .get(url, headers)
@@ -275,10 +275,10 @@ class LevelText extends React.Component {
           ></p>
           <p className="mobile">
             <a
-              href="https://chat.whatsapp.com/D1AEiLDkCbs5GYplh5KK3U"
+              href="https://discord.gg/Xa8TFzYenP"
               style={{ color: "#61A8D6" }}
             >
-              Discourse Forum
+              Discord Server
             </a>
           </p>
           <form onSubmit={this.handleSubmit}>
@@ -304,7 +304,7 @@ class LevelUsername extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "Team Name",
+      value: "User Name",
       name1: "Participant Name",
       name2: "Participant Name",
       name3: "Participant Name",
@@ -345,7 +345,7 @@ class LevelUsername extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    let url = "https://cryptex.elan.org.in/doesUsernameExist/" + this.state.value;
+    let url = "https://cryptex.elan.org.in/backend/doesUsernameExist/" + this.state.value;
     fetch(url)
       .then(response => response.json())
       .then(result => {
@@ -359,7 +359,7 @@ class LevelUsername extends React.Component {
             }
           };
           var loginUrl =
-            "https://cryptex.elan.org.in" +
+            "https://cryptex.elan.org.in/backend" +
             "/adduser/" +
             JSON.parse(localStorage.getItem("email")).email +
             "/" +
@@ -400,7 +400,7 @@ class LevelUsername extends React.Component {
             className="username"
             value={this.state.value}
             onChange={this.handleChange}
-            placeholder="Team Name"
+            placeholder="User Name"
           />
           <br />
           <input
@@ -411,37 +411,6 @@ class LevelUsername extends React.Component {
             placeholder="Participant Name"
           />
           <br />
-          <input
-            type="name"
-            className="username"
-            value={this.state.name2}
-            onChange={this.handleChange2}
-            placeholder="Participant Name"
-          />
-          <br />
-          <input
-            type="name"
-            className="username"
-            value={this.state.name3}
-            onChange={this.handleChange3}
-            placeholder="Participant Name"
-          />
-          <br />
-          <input
-            type="name"
-            className="username"
-            value={this.state.name4}
-            onChange={this.handleChange4}
-            placeholder="Participant Name"
-          />
-          <br />
-          <input
-            type="name"
-            className="username"
-            value={this.state.name5}
-            onChange={this.handleChange5}
-            placeholder="Participant Name"
-          />
           <br />
           <br />
           <input type="submit" className="dive" value="Submit" />
@@ -473,7 +442,7 @@ class LevelRules extends React.Component {
       }
     };
     let url =
-      "https://cryptex.elan.org.in/acceptedrules?id_token=" +
+      "https://cryptex.elan.org.in/backend/acceptedrules?id_token=" +
       localStorage.getItem("id_token");
     axios
       .get(url, headers)
@@ -499,20 +468,13 @@ class LevelRules extends React.Component {
         <br />
         <br />
         <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <h1 className="rules">Rules</h1>
         <div class="rules" style={{ textAlign: "left" }}>
           <div class="rules-content">
-            <ol>
-              <li>
-                Check out the rules{" "}
-                <a href="https://cryptex.elan.org.in/rules">here</a>.
-              </li>
-            </ol>
-          </div>
+              Check out the rules{" "}<br />
+                <a href="https://cryptex.elan.org.in/backend/rules">here</a>.
+            
+            </div>
         </div>
         <form onSubmit={this.handleAccepted}>
           <input type="submit" className="username-button" value="I accept" />
@@ -550,7 +512,7 @@ class Home extends React.Component {
           <p class="jumbotron-heading animated fadeIn">The Hunt</p>
           <p class="jumbotron-subtitle">Mini Cryptex 2020</p>
           <p class="jumbotron-subtitle">
-            Online till 1830 hours, 22th November.{" "}
+            Online till 1945 hours, 22th November.{" "}
           </p>
           <button className="DiveInButton" onClick={this.authenticate}>
             <div className="transform">D I V E &nbsp; I N</div>

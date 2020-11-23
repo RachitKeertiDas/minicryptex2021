@@ -77,14 +77,15 @@ func main() {
 	fmt.Println("To do : Protect all endpoints with JWT Auth")
 	fmt.Println("Change level type to int. It's string rn. ")
 	answers = make(map[string]string)
-	answers["0"] = "zozimus"
-	answers["1"] = "goldenfleece"
-	answers["2"] = "221"
-	answers["3"] = "icveg"
-	answers["4"] = "hailhydra"
-	answers["5"] = "riptide"
-	answers["6"] = "pixar"
-	answers["7"] = "lemonysnicket"
+	answers["0"] = "ladygodiva"
+	answers["1"] = "triskaidekaphobia"
+	answers["2"] = "beatles"
+	answers["3"] = "fcuk"
+	answers["4"] = "stanlee"
+	answers["5"] = "pi"
+	answers["6"] = "pisces"
+	answers["7"] = "pabloescobar"
+	answers["8"] = "welovecryptex67435"
 	// Set client options
 	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
 	// Connect to MongoDB
@@ -156,10 +157,10 @@ func main() {
 	// router.Handle("/things", ThingsHandler).Methods("GET")
 
 	// ALL API CALLS (GraphQL) are defined here
-	router.HandleFunc("/whichlevel/{clientid}", LevelQueryHandler)
-	router.HandleFunc("/css", CSSHandler)
-	router.HandleFunc("/doesUsernameExist/{username}", DoesUsernameExistHandler)
-	router.Handle("/adduser/{ID}/{username}/{name1}/{name2}/{name3}/{name4}/{name5}", negroni.New(
+	router.HandleFunc("/backend/whichlevel/{clientid}", LevelQueryHandler)
+	router.HandleFunc("/backend/css", CSSHandler)
+	router.HandleFunc("/backend/doesUsernameExist/{username}", DoesUsernameExistHandler)
+	router.Handle("/backend/adduser/{ID}/{username}/{name1}/{name2}/{name3}/{name4}/{name5}", negroni.New(
 		negroni.HandlerFunc(jwtMiddleware.HandlerWithNext),
 		negroni.Wrap(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			fmt.Println("Here")
@@ -171,7 +172,7 @@ func main() {
 				_, _ = collection.InsertOne(context.TODO(), bson.M{"clientID": vars["ID"], "username": vars["username"], "level": -1, "name1": vars["name1"], "name2": vars["name2"], "name3": vars["name3"], "name4": vars["name4"], "name5": vars["name5"], "lastModified": time.Now().UTC()})
 			}
 		}))))
-	router.Handle("/acceptedrules", negroni.New(
+	router.Handle("/backend/acceptedrules", negroni.New(
 		negroni.HandlerFunc(jwtMiddleware.HandlerWithNext),
 		negroni.Wrap(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			tokenString := r.URL.Query()["id_token"][0]
@@ -192,7 +193,7 @@ func main() {
 				log.Fatal(err)
 			}
 		}))))
-	router.Handle("/answer/{level}/{answer}", negroni.New(
+		router.Handle("/backend/answer/{level}/{answer}", negroni.New(
 		negroni.HandlerFunc(jwtMiddleware.HandlerWithNext),
 		negroni.Wrap(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			tokenString := r.URL.Query()["id_token"][0]
@@ -247,7 +248,7 @@ func main() {
 				responseJSON("InvalidToken", w, http.StatusOK)
 			}
 		}))))
-	router.Handle("/level", negroni.New(
+	router.Handle("/backend/level", negroni.New(
 		negroni.HandlerFunc(jwtMiddleware.HandlerWithNext),
 		negroni.Wrap(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			tokenString := r.URL.Query()["id_token"][0]
@@ -268,23 +269,34 @@ func main() {
 				} else {
 					var resp LevelResponse
 					if current.Level == 0 {
-						resp = LevelResponse{0, "Level 0: The Flyer contains a clue. "}
+						resp = LevelResponse{0, "Level 1:<br/><img width=\"auto\" height=\"450px\" margin-top=\"50px\" src=\"https://res.cloudinary.com/ddc4oysii/image/upload/v1579860040/F8258061161AFD91C588E71FF6DC5AC103FAE288E9D4FDB1110A35618E88AF7C/7496CE0698D7F149CFEF1C096EAF0944F6851C01696E8143BA6ABB69C466290E_a7h02o.png\"> "}
 					} else if current.Level == 1 {
-						resp = LevelResponse{1, "Level 1: The Zozimus Logo"}
+						resp = LevelResponse{1, "Level 2:<br/><img width=\"auto\" height=\"450px\" margin-top=\"50px\" src=\"https://res.cloudinary.com/drgddftct/image/upload/v1547292346/QPADBgJd8EkeBut6.png\">"}
 					} else if current.Level == 2 {
-						resp = LevelResponse{2, "Level 2: The room number. "}
+						resp = LevelResponse{2, "Level 3: <br/><a href='https://drive.google.com/file/d/1UQGx-2_ZZxnEo65-oYXZgzJ5u2GdLabM/view?usp=sharing'>Click here. </a> "}
 					} else if current.Level == 3 {
-						resp = LevelResponse{3, "Level 3: A code. "}
+						resp = LevelResponse{3, "Level 4:<br/> <img width=\"auto\" height=\"400px\" margin-top=\"50px\" src=\"https://res.cloudinary.com/dmridruee/image/upload/v1547192728/fpF6juWJPP7D2S9BJWcc/LQtD12ldlFRZ4OT90cDj.png\"> "}
 					} else if current.Level == 4 {
-						resp = LevelResponse{4, "Level 4: <a href='https://docs.google.com/document/d/e/2PACX-1vRbmcKXV1JTztY31VXhdcNj6jKLWJHaMzaHTul3uIdZYYmdhLzuJS55mb4I2YTn-wLGfvs0-uDjHItu/pub'>Click here. </a>"}
+						resp = LevelResponse{4,"Level 5:You took this long to get to the fifth question?<br>"+
+ 			"HAAHHAHA HAAAAHHH HAAHHHAA HAAHHAHA HAAHAAHH HAAAHHAA HAAHAHHA HAAHAAAA<br/>"+
+ 			"HAAAHHAH HHAHAAHH HHAHHHHH HAAHAHHH HAAHHAHA HHAHHHHH HAAHHAHA HAAAAHHH<br/>"+
+ 			"HAAHHHAA HAAHAAHH HAAHHHHA HAAHAHHA HAAHAAHA HAAHHAHA HAAHHAHH HHHHAHAH<br/>"+
+ 			"HAHHAHHH HAAHAHHA HAAAHHAA HHAHHHHH HAAHAAHH HAAHAHHA HAAHHAAH HAAHHAHA<br/>"+
+ 			"HHAHHHHH HAAHHHHA HAAHAAAH HAAHHAHH HHAHHHHH HAAAHHAA HAAAHAHH HAAHAAAA<br/>"+
+			"HAAAHHAH HAAHAHHA HAAHHAHA HAAAHHAA HHAHAAHH HHAHHHHH HAAHHHAA HAAHAAAA<br/>"+
+ 			"HAAHAAHA HAAHAHHA HAAHAAAH HAAHHAAA HHAHHHHH HAAAHAHH HAAHAAAA HHAHHHHH<br/>"+
+ 			"HAAHHHHA HHAHHHHH HAAHAHHH HAAHHHHA HAAHAAHH HAAAHAHH HHHHAHAH<br/>"+
+ 			"You two-dimensional, depth lacking loser!"}
 					} else if current.Level == 5 {
-						resp = LevelResponse{5, "Level 5: The Modern name of the hairpin. "}
+						resp = LevelResponse{5, "Level 6:<br/> <img width=\"700px\" height=\"auto\" src=\"https://res.cloudinary.com/ddc4oysii/image/upload/v1579860364/F8258061161AFD91C588E71FF6DC5AC103FAE288E9D4FDB1110A35618E88AF7C/7B2E50D7BDBDA6B2D92268D2498E80471C9D8EE0BD5E708FC28E8E3F00E91322_xez7qs.jpg\"> "}
 					} else if current.Level == 6 {
-						resp = LevelResponse{6, "Level 6: Connect. "}
+						resp = LevelResponse{6, "Level 7:<img src=\"https://res.cloudinary.com/drgddftct/image/upload/v1605967394/question_dg.png\">"}
 					} else if current.Level == 7 {
-						resp = LevelResponse{7, "Level 7: The End. "}
-					} else {
-						resp = LevelResponse{8, "Won"}
+						resp = LevelResponse{7, "Level 8:<br/> <img width=\"700px\" height=\"auto\" src=\"https://res.cloudinary.com/dmridruee/image/upload/v1547211291/0PNQNGAOck2NQwyb6hQV.png\"> "}
+					} else if current.Level == 8 {
+						resp = LevelResponse{8,"Level 9: <br/> <img width=\"700px\" height=\"auto\" src=\"https://res.cloudinary.com/drgddftct/image/upload/v1606051168/level9.png\"> "}
+					}else {
+						resp = LevelResponse{9, "Congrats, You have Won."}
 					}
 					w.Header().Set("Content-Type", "application/json")
 					w.WriteHeader(http.StatusOK)
@@ -293,11 +305,10 @@ func main() {
 				}
 			}
 		}))))
-	router.HandleFunc("/leaderboard", LeaderboardHandler)
-	router.HandleFunc("/leaderboardtable", LeaderboardTableHandler)
-	router.HandleFunc("/rules", RulesHandler)
+	router.HandleFunc("/backend/leaderboard", LeaderboardHandler)
+	router.HandleFunc("/backend/leaderboardtable", LeaderboardTableHandler)
+	router.HandleFunc("/backend/rules", RulesHandler)
 
-	router.PathPrefix("/").Handler(http.FileServer(http.Dir("build")))
 	http.ListenAndServe(":8080", router)
 }
 func CSSHandler(w http.ResponseWriter, r *http.Request) {
@@ -376,7 +387,7 @@ func LeaderboardHandler(w http.ResponseWriter, request *http.Request) {
 		// create a value into which the single document can be decoded
 		var elem user
 		err := find.Decode(&elem)
-		fmt.Println(elem)
+		//fmt.Println(elem)
 		if err != nil {
 			fmt.Println("Error decoding leaderboard item")
 		}
