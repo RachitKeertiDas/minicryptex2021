@@ -9,7 +9,7 @@ import axios from "axios";
 
 const AUTH0_CLIENT_ID = "DxKXzYxf9B12bDwME3Og6YN6p8RoqvFA";
 const AUTH0_DOMAIN = "dev-l0ini8h1.us.auth0.com";
-const AUTH0_CALLBACK_URL = "https://cryptex.elan.org.in";
+const AUTH0_CALLBACK_URL = "http://localhost:8080";
 const AUTH0_API_AUDIENCE = "https://dev-l0ini8h1.us.auth0.com/api/v2/";
 
 // <div className="navbar" id="mainNavBar">
@@ -141,7 +141,7 @@ class LoggedIn extends React.Component {
 
   fetchLevel() {
     let url =
-      "https://cryptex.elan.org.in/whichlevel/" +
+      "http://localhost:8080/whichlevel/" +
       JSON.parse(localStorage.getItem("email")).email;
     fetch(url)
       .then(response => response.json())
@@ -226,7 +226,7 @@ class LevelText extends React.Component {
       }
     };
     let url =
-      "https://cryptex.elan.org.in/answer/" +
+      "http://localhost:8080/answer/" +
       this.state.level.toString() +
       "/" +
       this.state.value +
@@ -250,7 +250,7 @@ class LevelText extends React.Component {
       }
     };
     let url =
-      "https://cryptex.elan.org.in/level?id_token=" +
+      "http://localhost:8080/level?id_token=" +
       localStorage.getItem("id_token");
     axios
       .get(url, headers)
@@ -345,7 +345,7 @@ class LevelUsername extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    let url = "https://cryptex.elan.org.in/doesUsernameExist/" + this.state.value;
+    let url = "http://localhost:8080/doesUsernameExist/" + this.state.value;
     fetch(url)
       .then(response => response.json())
       .then(result => {
@@ -359,7 +359,7 @@ class LevelUsername extends React.Component {
             }
           };
           var loginUrl =
-            "https://cryptex.elan.org.in" +
+            "http://localhost:8080" +
             "/adduser/" +
             JSON.parse(localStorage.getItem("email")).email +
             "/" +
@@ -378,11 +378,12 @@ class LevelUsername extends React.Component {
           axios
             .get(loginUrl, headers)
             .then(() => {
-              window.location.reload();
+              //window.location.reload();
             })
             .catch(error => {
               localStorage.clear();
-              window.location.reload();
+              console.log(error);
+              //window.location.reload();
             });
         }
       });
@@ -473,7 +474,7 @@ class LevelRules extends React.Component {
       }
     };
     let url =
-      "https://cryptex.elan.org.in/acceptedrules?id_token=" +
+      "http://localhost:8080/acceptedrules?id_token=" +
       localStorage.getItem("id_token");
     axios
       .get(url, headers)
@@ -509,7 +510,7 @@ class LevelRules extends React.Component {
             <ol>
               <li>
                 Check out the rules{" "}
-                <a href="https://cryptex.elan.org.in/rules">here</a>.
+                <a href="http://localhost:8080/rules">here</a>.
               </li>
             </ol>
           </div>

@@ -20,7 +20,7 @@ import (
 	// "github.com/auth0/go-jwt-middleware"
 	jwtmiddleware "github.com/auth0/go-jwt-middleware"
 	"github.com/codegangsta/negroni"
-	"github.com/dgrijalva/jwt-go"
+	"github.com/form3tech-oss/jwt-go"
 	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/mongo"
 	// "github.com/joho/godotenv"
@@ -103,6 +103,7 @@ func main() {
 		ValidationKeyGetter: func(token *jwt.Token) (interface{}, error) {
 			// Verify 'aud' claim
 			aud := "https://dev-l0ini8h1.us.auth0.com/api/v2/"
+			fmt.Println("here")
 			checkAud := token.Claims.(jwt.MapClaims).VerifyAudience(aud, false)
 			if !checkAud {
 				return token, errors.New("Invalid audience.")
