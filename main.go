@@ -269,13 +269,13 @@ func main() {
 				} else {
 					var resp LevelResponse
 					if current.Level == 0 {
-						resp = LevelResponse{0, "Level 0: The Flyer contains a clue. "}
+						resp = LevelResponse{0, "Level 1:<br/><img width=\"auto\" height=\"450px\" margin-top=\"50px\" src=\"https://res.cloudinary.com/ddc4oysii/image/upload/v1579860040/F8258061161AFD91C588E71FF6DC5AC103FAE288E9D4FDB1110A35618E88AF7C/7496CE0698D7F149CFEF1C096EAF0944F6851C01696E8143BA6ABB69C466290E_a7h02o.png\"> "}
 					} else if current.Level == 1 {
-						resp = LevelResponse{1, "Level 1: The Zozimus Logo"}
+						resp = LevelResponse{1, "Level 1:<br/><img width=\"auto\" height=\"450px\" margin-top=\"50px\" src=\"https://res.cloudinary.com/ddc4oysii/image/upload/v1579860040/F8258061161AFD91C588E71FF6DC5AC103FAE288E9D4FDB1110A35618E88AF7C/7496CE0698D7F149CFEF1C096EAF0944F6851C01696E8143BA6ABB69C466290E_a7h02o.png\"> "}
 					} else if current.Level == 2 {
-						resp = LevelResponse{2, "Level 2: The room number. "}
+						resp = LevelResponse{2, "Level 1:<br/><img width=\"auto\" height=\"450px\" margin-top=\"50px\" src=\"https://res.cloudinary.com/ddc4oysii/image/upload/v1579860040/F8258061161AFD91C588E71FF6DC5AC103FAE288E9D4FDB1110A35618E88AF7C/7496CE0698D7F149CFEF1C096EAF0944F6851C01696E8143BA6ABB69C466290E_a7h02o.png\"> "}
 					} else if current.Level == 3 {
-						resp = LevelResponse{3, "Level 3: A code. "}
+						resp = LevelResponse{3, "Level 1:<br/><img width=\"auto\" height=\"450px\" margin-top=\"50px\" src=\"https://res.cloudinary.com/ddc4oysii/image/upload/v1579860040/F8258061161AFD91C588E71FF6DC5AC103FAE288E9D4FDB1110A35618E88AF7C/7496CE0698D7F149CFEF1C096EAF0944F6851C01696E8143BA6ABB69C466290E_a7h02o.png\"> "}
 					} else if current.Level == 4 {
 						resp = LevelResponse{4, "Level 4: <a href='https://docs.google.com/document/d/e/2PACX-1vRbmcKXV1JTztY31VXhdcNj6jKLWJHaMzaHTul3uIdZYYmdhLzuJS55mb4I2YTn-wLGfvs0-uDjHItu/pub'>Click here. </a>"}
 					} else if current.Level == 5 {
